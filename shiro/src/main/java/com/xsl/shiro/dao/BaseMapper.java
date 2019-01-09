@@ -1,5 +1,7 @@
 package com.xsl.shiro.dao;
 
+import java.util.List;
+
 public interface BaseMapper<T> {
 
     void add(T t);
@@ -10,6 +12,8 @@ public interface BaseMapper<T> {
 
     void deleteById(Integer id);
 
+    List<T> listPage(Integer pageNo, Integer pageSize);
 
+    Long count();
 
 }

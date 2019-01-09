@@ -52,8 +52,10 @@ public class CustomRealm extends AuthorizingRealm {
         }
         User user = (User) getAvailablePrincipal(principalCollection);
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-        info.setRoles(user.getRoles());
-        info.setStringPermissions(user.getPerms());
+
+//        info.setRoles(user.getRoles());
+//        info.setStringPermissions(user.getPerms());
+
         return info;
     }
 
@@ -71,7 +73,6 @@ public class CustomRealm extends AuthorizingRealm {
         if(userName == null){
             throw new AccountException("Null username are not allowed by this realm");
         }
-
         User user = userService.findUserByName(userName);
         if(user == null){
             throw new UnknownAccountException("No account found for admin["+ userName +"]");
@@ -81,11 +82,11 @@ public class CustomRealm extends AuthorizingRealm {
          * 查询用户的角色和权限存到SimpleAuthenticationInfo中，这样在其它地方
          * SecurityUtils.getSubject().getPrincipal()就能拿出用户的所有信息，包括角色和权限
          */
-        Set<String> roles = roleService.getRolesByUserId(user.getUid());
-        Set<String> perms = permService.getPermsByUserId(user.getUid());
-
-        user.setRoles(roles);
-        user.setPerms(perms);
+//        Set<String> roles = roleService.getRolesByUserId(user.getUid());
+//        Set<String> perms = permService.getPermsByUserId(user.getUid());
+//
+//        user.setRoles(roles);
+//        user.setPerms(perms);
 
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPwd(), getName());
         if(user.getSalt() != null){

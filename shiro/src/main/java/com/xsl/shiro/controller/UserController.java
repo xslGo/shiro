@@ -43,9 +43,9 @@ public class UserController {
             //返回登录用户的信息给前台，含用户的所有角色和权限
             return Json.succ(oper)
                     .data("uid", user.getUid())
-                    .data("nick", user.getNick())
-                    .data("roles", user.getRoles())
-                    .data("perms", user.getPerms());
+                    .data("nick", user.getNick());
+//                    .data("roles", user.getRoles())
+//                    .data("perms", user.getPerms());
 
         } catch (UnknownAccountException uae) {
             log.warn("用户帐号不正确");

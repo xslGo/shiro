@@ -69,6 +69,7 @@ public class CustomRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
+//        token.setRememberMe(true);
         String userName = token.getUsername();
         if(userName == null){
             throw new AccountException("Null username are not allowed by this realm");
